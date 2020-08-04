@@ -1,0 +1,32 @@
+Conda virtual env commands 
+
+To create a new env 
+# conda create --name your_env_name python=3.7
+# conda create --name your_env_name python=3.7 scipy=0.15.0 pandas
+
+To remove a virtual env
+# conda remove --name your_env_name —all
+Or, 
+# conda env remove --name your_env_name --all
+Note: The ‘ — all’ flag is to remove all packages from the environment and
+is necessary to completely clean the environment.
+
+
+
+If your environments are not showing up, you probably do not have nb_conda_kernels installed in the environment where Jupyter is installed. Anaconda's documentation states that.
+
+nb_conda_kernels should be installed in the environment from which you run Jupyter Notebook or JupyterLab. This might be your base conda environment, but it need not be. For instance, if the environment notebook_env contains the notebook package, then you would run
+
+$ conda install -n python_env ipykernel
+
+Any other environments you wish to access in your notebooks must have an appropriate kernel package installed. For instance, to access a Python environment, it must have the ipykernel package; e.g.
+
+$ conda install -n python_env ipykernel
+
+4. If other solutions fail to get Jupyter to recognize other conda environments, you can always install and run jupyter from within a specific environment. You may not be able to see or switch to other environments from within Jupyter though
+
+$ conda create -n py36_test -y python=3.6 jupyter
+$ source activate py36_test
+(py36_test) $ which jupyter
+/home/schowell/anaconda3/envs/py36_test/bin/jupyter
+(py36_test) $ jupyter notebook
